@@ -32,7 +32,7 @@ export default function App() {
     const handleTour = () => {
         setIsRunning(false)
         setSeconds(0);
-        setPrevTime(formatTime(seconds))
+        setPrevTime(formatTime(seconds + parseInt(prevTime.split(":")[0]) * 3600 + parseInt(prevTime.split(":")[1]) * 60 + parseInt(prevTime.split(":")[2])))
     };
 
     const formatTime = (time) => {
@@ -43,12 +43,12 @@ export default function App() {
     };
 
     const remainingTime = () => {
-        const ms = new Date("2023-06-18").getTime() - new Date().getTime()
+        const ms = new Date("2023-06-17 10:15:00").getTime() - new Date().getTime()
 
         const days = Math.floor(ms / (1000 * 60 * 60 * 24));
         const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-        return `${days} Days, ${hours} Hour${hours === 1 || "s"}`;
+        return `${days} Gün, ${hours} Saat`;
     }
 
     return (
